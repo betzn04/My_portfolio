@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  transition: opacity 300ms ease-out;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.split-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: fadeInUp 0.5s forwards;
+}
+
+.split-text span:nth-child(1) { animation-delay: 0s; }
+.split-text span:nth-child(2) { animation-delay: 0.1s; }
+.split-text span:nth-child(3) { animation-delay: 0.2s; }
+.split-text span:nth-child(4) { animation-delay: 0.3s; }
+.split-text span:nth-child(5) { animation-delay: 0.4s; }
+.split-text span:nth-child(6) { animation-delay: 0.5s; }
+.split-text span:nth-child(7) { animation-delay: 0.6s; }
+.split-text span:nth-child(8) { animation-delay: 0.7s; }
+.split-text span:nth-child(9) { animation-delay: 0.8s; }
+.split-text span:nth-child(10) { animation-delay: 0.9s; }
+.split-text span:nth-child(11) { animation-delay: 1.00s; }
+.split-text span:nth-child(12) { animation-delay: 1.10s; }
+.split-text span:nth-child(13) { animation-delay: 1.20s; }
+.split-text span:nth-child(14) { animation-delay: 1.30s; }
+.split-text span:nth-child(15) { animation-delay: 1.40s; }
+/* Add more nth-child rules as needed */
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
