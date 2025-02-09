@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Home from '../home/home';
-import './intro.css'; // Import the CSS file
+import './intro.css'; 
+import Dashboard from '../dashboard/dashboard';
 
 const Intro: React.FC = () => {
   const [showHome, setShowHome] = useState(false);
@@ -9,16 +10,18 @@ const Intro: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setFadeOut(true);
-      setTimeout(() => {
+      const fadeOutTimer = setTimeout(() => {
         setShowHome(true);
-      }, 1900); // Match this duration with the CSS transition duration
-    }, 2100); // 600ms for initial display + 300ms for fade-out
+      }, 2000); 
+
+      return () => clearTimeout(fadeOutTimer);
+    }, 2100); 
 
     return () => clearTimeout(timer);
   }, []);
 
   if (showHome) {
-    return <Home />;
+    return <Dashboard/>;
   }
 
   const text = "Hi, I'm Betsin!";

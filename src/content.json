@@ -65,7 +65,7 @@
   ],
   "projects": [
     {
-      "name": "Netflix Clone (In Progress)",
+      "name": "Netflix Clone",
       "description": "Building a Netflix-like web application to enhance React and TypeScript skills.",
       "progress": [
         "Designed and implemented the dashboard page displaying movie thumbnails dynamically using React and TypeScript.",
@@ -73,7 +73,7 @@
       ],
       "technologiesUsed": ["React", "TypeScript", "TMDb API", "CSS Modules"],
       "learningGoals": "Focused on mastering React Router, dynamic API integration, and creating responsive UIs.",
-      "github": "https://github.com/betzn04/Netflix-clone"
+      "link": "https://github.com/betzn04/Netflix-clone"
     }
   ]
 }

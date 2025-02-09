@@ -1,12 +1,20 @@
 nav {
     background-color: #333;
     overflow: hidden;
-    justify-content: center;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: fixed; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.nav-link {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
 }
 
 .nav-logo {
@@ -47,9 +55,8 @@ nav a.active {
     color: white;
 }
 
-.shiny-text a{
+.shiny-text a {
     color: #b5b5b5a4;
-    /* Adjust this color to change intensity/style */
     background: linear-gradient(120deg,
             rgba(255, 255, 255, 0) 40%,
             rgba(255, 255, 255, 0.8) 50%,
@@ -57,7 +64,6 @@ nav a.active {
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
-    /* margin: 15px; */
     float: right;
     animation: shine 5s linear infinite;
 }
@@ -80,19 +86,31 @@ nav a.active {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    margin-left: 10px;
+    justify-content: start;
 }
 
-.bar {
-    height: 3px;
-    width: 25px;
-    background-color: white;
-    margin: 4px 0;
-    transition: 0.4s;
+.navbar {
+    transition: top 0.3s;
+}
+
+.navbar.hidden {
+    top: -100px;
+}
+
+.navbar.visible {
+    top: 0;
 }
 
 @media (max-width: 768px) {
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .nav-links {
-        display: none;
+        display: flex;
         flex-direction: column;
         position: absolute;
         top: 60px;
@@ -100,13 +118,26 @@ nav a.active {
         background-color: #333;
         width: 100%;
         padding: 1rem;
+        transition: max-height 0.3s ease-out;
+        max-height: 0;
+        overflow: hidden;
     }
 
     .nav-links.open {
-        display: flex;
+        max-height: 500px;
     }
 
     .nav-toggle {
         display: flex;
+        margin-left: 10px;
+    }
+
+    .nav-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: #ffffff;
+        transition: all 0.3s ease;
     }
 }
