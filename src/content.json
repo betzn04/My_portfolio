@@ -2,9 +2,7 @@
   "personalInfo": {
     "name": "Betsin Kuruvila Mekkat",
     "email": "betsingmr@gmail.com",
-    "mobile": "+916384880383",
     "linkedin": "https://www.linkedin.com/in/betsin-kuruvila-mekkat/",
-    "address": "Mekkat House, Nilambur, Kerala 679334"
   },
   "summary": "Results-driven react developer with a solid foundation in front-end development, specialising in creating dynamic and responsive web applications. Proficient in React.js, Javascript and modern libraries. I excelled in building user interface not only visually appealing but also highly functional.",
   "education": [
@@ -12,15 +10,9 @@
       "degree": "Bachelor of Technology in Information Technology",
       "institution": "Hindusthan College of Engineering and Technology, Coimbatore",
       "year": "2018 – 2022"
-    },
-    {
-      "degree": "Higher Secondary Education",
-      "institution": "Nirmala Higher Secondary School, Erumamunda",
-      "year": "2018"
     }
   ],
   "languagesAndSkills": {
-    "languages": ["English (fluent)", "Malayalam (native or advanced proficiency)", "Tamil (basic proficiency)", "Hindi (basic proficiency)"],
     "skills": ["Reactjs", "Typescript", "Redux", "HTML", "CSS", "JavaScript", "Bootstrap", "Agile", "Git"]
   },
   "workExperience": [
@@ -33,22 +25,10 @@
         {
           "name": "UIM (User Identity Management)",
           "description": "This project focused on developing a robust User Identity Management system, aimed at enhancing user authentication and access control functionalities. As a Developer, I played a key role in creating a responsive and user-friendly interface using React 17, ensuring an optimal user experience across various devices.",
-          "achievements": [
-            "Successfully reduced the average load time of the user portal by 30% through optimised component rendering and efficient state management, leading to improved user experience.",
-            "Enhanced API response times by implementing efficient data fetching strategies, resulting in a 20% increase in overall application performance.",
-            "Played a key role in achieving a 100% pass rate in API testing, ensuring high reliability and functionality of the services before production deployment.",
-            "Contributed to improving team productivity by 15% through the implementation of automated testing processes, enabling faster development cycles and quicker release schedules."
-          ]
         },
         {
           "name": "Brownie Reward System",
           "description": "Developed a role-based web application designed to reward managers with ‘Brownie Points’ for acquiring new skills or completing specific tasks. Implemented user interfaces for both admin and reviewer roles, enhancing application usability and security. Crafted a responsive and user-friendly interface, significantly enhancing user experience using React 17. Ensured seamless functionality across multiple device types, improving accessibility and engagement. Facilitated a motivational environment by providing tangible rewards, leading to increased productivity and skill development among managerial staff.",
-          "achievements": [
-            "Point allocation and management system.",
-            "Voucher redemption process based on accumulated points.",
-            "User authentication and role-based access control to ensure data integrity and security.",
-            "Contributed significantly to the front-end development, ensuring a responsive and intuitive user experience across different devices."
-          ]
         }
       ]
     },
@@ -67,10 +47,6 @@
     {
       "name": "Netflix Clone",
       "description": "Building a Netflix-like web application to enhance React and TypeScript skills.",
-      "progress": [
-        "Designed and implemented the dashboard page displaying movie thumbnails dynamically using React and TypeScript.",
-        "Completed routing functionality for navigating from the dashboard to a detailed movie description page."
-      ],
       "technologiesUsed": ["React", "TypeScript", "TMDb API", "CSS Modules"],
       "learningGoals": "Focused on mastering React Router, dynamic API integration, and creating responsive UIs.",
       "link": "https://github.com/betzn04/Netflix-clone"
