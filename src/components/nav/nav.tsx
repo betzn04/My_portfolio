@@ -1,44 +1,75 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './nav.css';
+import { motion } from 'framer-motion';
+// import resume from '../../../public/assets/doc/resume.pdf';
 
 const Nav: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-    const handleScroll = () => {
-        setIsVisible(true);
+  const controlNavbar = useCallback(() => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY && currentScrollY > 70) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+    setLastScrollY(currentScrollY);
+  }, [lastScrollY]);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    
+    const debounceScroll = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(controlNavbar, 100);
     };
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    const animationDuration = `5s`;
-    const toggleNav = () => {
-        console.log('Nav toggle clicked');
-        setIsOpen(!isOpen);
+    window.addEventListener('scroll', debounceScroll);
+    return () => {
+      window.removeEventListener('scroll', debounceScroll);
+      clearTimeout(timeoutId);
     };
+  }, [controlNavbar]);
 
-    return (
-        <nav className={`navbar ${isVisible ? 'visible' : 'hidden'}`}>
-            <div className="nav-toggle" onClick={toggleNav}>
-                <span className="bar"></span>
-                <span className="bar"></span>
-                <span className="bar"></span>
-            </div>
-            <div className="nav-link">
-                <div className={`shiny-text nav-links ${isOpen ? 'open' : ''}`} style={{ animationDuration }}>
-                    <a href="#contact">Contact</a>
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#home">Home</a>
-                </div>
-            </div>
-        </nav>
-    );
+  const animationDuration = `5s`;
+  const toggleNav = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <motion.nav
+      className={`navbar ${isVisible ? 'visible' : 'hidden'}`}
+      initial={{ y: -50 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <>
+        <div 
+          className="nav-toggle" 
+          onClick={toggleNav}
+          role="button"
+          aria-expanded={isOpen}
+          aria-label="Toggle navigation menu"
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </div>
+        <div className="nav-link">
+          <div className={`shiny-text nav-links ${isOpen ? 'open' : 'closed'}`} style={{ animationDuration }}>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href='E:\my_portfolio\public\assets\doc\resume.pdf' target="_blank" rel="noopener noreferrer">Resume</a>
+          </div>
+        </div>
+      </>
+    </motion.nav>
+  );
 };
 
 export default Nav;

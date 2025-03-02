@@ -11,7 +11,7 @@
     {
       "degree": "Bachelor of Technology in Information Technology",
       "institution": "Hindusthan College of Engineering and Technology, Coimbatore",
-      "year": "2018 – 2022"
+      "year": "2018 - 2022"
     },
     {
       "degree": "Higher Secondary Education",
@@ -66,14 +66,16 @@
   "projects": [
     {
       "name": "Netflix Clone",
-      "description": "Building a Netflix-like web application to enhance React and TypeScript skills.",
-      "progress": [
-        "Designed and implemented the dashboard page displaying movie thumbnails dynamically using React and TypeScript.",
-        "Completed routing functionality for navigating from the dashboard to a detailed movie description page."
-      ],
+      "description": "Built a Netflix-like web application to enhance React and TypeScript skills.",
       "technologiesUsed": ["React", "TypeScript", "TMDb API", "CSS Modules"],
       "learningGoals": "Focused on mastering React Router, dynamic API integration, and creating responsive UIs.",
       "link": "https://github.com/betzn04/Netflix-clone"
+    },
+    {
+      "name":"My Portfolio",
+      "description":"Developing a personal portfolio website to showcase my skills and projects.",
+      "technologiesUsed":["React","TypeScript","Bootstrap","Material-UI","Vercel"],
+      "link": "https://github.com/betzn04/"
     }
   ]
 }

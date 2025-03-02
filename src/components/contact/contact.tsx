@@ -18,16 +18,18 @@ const Contact: React.FC = () => {
                 <div className="contact-info">
                     <h3>Get in Touch</h3>
                     <p>I'd love to hear from you! Whether you have a question, feedback, or just want to connect, feel free to reach out. You can contact me through the options below or fill out the form to send a message directly.</p>
-                    <br/>
-                    <p>
-                        <FaLinkedin /> <a href="https://www.linkedin.com/in/betsin-kuruvila-mekkat/">LinkedIn</a>
-                    </p>
-                    <p>
-                        <FaGithub /> <a href="https://github.com/betzn04/">GitHub</a>
-                    </p>
-                    <p>
-                        <FaEnvelope /> <a href="mailto:betsingmr@gmail.com">betsingmr@gmail.com</a>
-                    </p>
+                    <br />
+                    <div style={{ display: 'flex', flexDirection:'column', alignContent: 'flex-end', paddingTop: '19px' }}>
+                        <p>
+                            <FaLinkedin /> <a href="https://www.linkedin.com/in/betsin-kuruvila-mekkat/">LinkedIn</a>
+                        </p>
+                        <p>
+                            <FaGithub /> <a href="https://github.com/betzn04/">GitHub</a>
+                        </p>
+                        <p>
+                            <FaEnvelope /> <a href="mailto:betsingmr@gmail.com">betsingmr@gmail.com</a>
+                        </p>
+                    </div>
                 </div>
                 <div className="contact-form">
                     <form onSubmit={handleSubmit}>

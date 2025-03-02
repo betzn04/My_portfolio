@@ -28,7 +28,7 @@ const Parallax = ({ children, speed = 1 }: ParallaxProps) => {
       ref={ref}
       style={{
         transform: `translateY(${translateY}px)`,
-        transition: 'transform 0.3s ease-out',
+        transition: 'transform 0.7s ease-out',
       }}
     >
       {children}

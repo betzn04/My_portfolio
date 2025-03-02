@@ -5,6 +5,9 @@ const styles = {
     wrapper: {
         display: 'inline-block',
         whiteSpace: 'pre-wrap',
+        fontFamily: "Shrikhand",
+        fontSize: '3rem',
+        fontWeight: 400,
     },
     srOnly: {
         position: 'absolute' as 'absolute',

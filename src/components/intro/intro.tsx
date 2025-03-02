@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Home from '../home/home';
 import './intro.css'; 
 import Dashboard from '../dashboard/dashboard';
 

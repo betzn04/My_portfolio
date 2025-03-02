@@ -4,6 +4,7 @@
     margin: 10px;
 }
 
+
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
@@ -26,9 +27,10 @@
     opacity: 1;
 }
 
-.projects{
-    background-color:  rgb(68 64 206);
+.techs{
+    background: #0a192f;
     width: 100%;
+    min-height: 100vh;
     color:white;
 }
 
@@ -62,7 +64,7 @@
 }
 
 .project-card .btn {
-    background-color: #007bff;
+    background-color: #4800ff;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -80,12 +82,17 @@
 }
 
 .project-card .btn:hover {
-    background-color: #0056b3;
+    background-color: #006aff;
 }
 @media (min-width: 768px) {
-    .container, .container-md, .container-sm {
+    .container {
         width: 100%;
         max-width: none;
         padding: 5px;
+    }
+}
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1337px;
     }
 }
