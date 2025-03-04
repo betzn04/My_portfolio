@@ -7,18 +7,16 @@ import Techs from "../tech/tech"
 const dashboard = () => {
     return (
         <>
-            <section id="home">
+            {/* <section id="home"> */}
                 <Home />
-            </section>
-            <section className='projects' id="projects">
+            {/* </section> */}
                 <Projects />
-            </section>
-            <section className='techs' id="techs">
+            {/* <section className='techs' id="techs"> */}
                 <Techs />
-            </section>
-            <section id="contact">
+            {/* </section> */}
+            {/* <section id="contact"> */}
                 <Contact />
-            </section>
+            {/* </section> */}
         </>
     )
 }

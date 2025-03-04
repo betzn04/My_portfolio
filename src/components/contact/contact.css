@@ -10,17 +10,17 @@
 
 .contact-container {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
 }
 
 .contact-info {
-    flex: 1;
+    flex: 1 1;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 382px;
 }
 
 .contact-info h3 {
@@ -40,7 +40,7 @@
 }
 
 .contact-form {
-    flex: 2;
+    flex: 1 1;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -77,4 +77,18 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 425px) {
+    .contact-container {
+        flex-direction: column;
+    }
+}
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    .contact-form {
+        min-width: -webkit-fill-available;
+    }
 }

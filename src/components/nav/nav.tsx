@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import './nav.css';
 import { motion } from 'framer-motion';
-// import resume from '../../../public/assets/doc/resume.pdf';
 
 const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +63,7 @@ const Nav: React.FC = () => {
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
-            <a href='E:\my_portfolio\public\assets\doc\resume.pdf' target="_blank" rel="noopener noreferrer">Resume</a>
+            <a href='/assets/doc/resume.pdf' target="_blank" rel="noopener noreferrer">Resume</a>
           </div>
         </div>
       </>

@@ -30,10 +30,12 @@ const Projects: React.FC = () => {
     };
 
     return (
-        <ScrollAnimation>
-            <div className="px-4 container">
+        <div className="projects px-4">
+            <ScrollAnimation>
                 <h2 className="project-title">My Projects</h2>
-                <div className="row">
+                <h6>Here are some of the projects I've worked on.</h6>
+                <br />
+                <div className="row" style={{ padding: '2.5rem' }}>
                     {content.projects.map((project, index) => (
                         <div className="col-md-4 mb-4" key={index}>
                             <div className="card h-100 tilt project-card">
@@ -48,8 +50,8 @@ const Projects: React.FC = () => {
                         </div>
                     ))}
                 </div>
-            </div>
-        </ScrollAnimation>
+            </ScrollAnimation>
+        </div>
     );
 };
 

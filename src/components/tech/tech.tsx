@@ -6,11 +6,12 @@ import ScrollAnimation from '../../common/ScrollAnimation';
 
 const Projects: React.FC = () => {
     return (
-        <ScrollAnimation>
-            <div className="techs px-4 container">
+        <div className="techs px-4">
+            <ScrollAnimation>
                 <h2 className="project-title">Technology</h2>
                 <h6>Here's what I typically work with.</h6>
-                <div className="row">
+                <br />
+                <div className="row px-4" style={{ margin: '15px 5px 0px 5px' }}>
                     <div className="col-md-4 mb-4">
                         <div className="card h-100 tech-card">
                             <div className="card-body">
@@ -70,8 +71,8 @@ const Projects: React.FC = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </ScrollAnimation>
+            </ScrollAnimation>
+        </div>
     );
 };
 
