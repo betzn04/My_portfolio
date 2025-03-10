@@ -4,7 +4,31 @@ import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 const Contact: React.FC = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const form = e.currentTarget;
+            const formData = new FormData(form);
+
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData as any).toString()
+            });
+
+            if (response.ok) {
+                setIsSubmitted(true);
+            }
+        } catch (error) {
+            alert('There was an error submitting the form. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
     return (
         <div className="contact" id='contact'>
             <div className="contact-container">
@@ -30,14 +54,15 @@ const Contact: React.FC = () => {
                             Thanks for reaching out! I'll get back to you soon.
                         </div>
                     ) : (
-                        <form 
-                            name="contact" 
-                            method="POST" 
+                        <form
+                            name="contact"
+                            method="POST"
                             data-netlify="true"
-                            onSubmit={() => setIsSubmitted(true)}
+                            data-netlify-honeypot="bot-field"
+                            onSubmit={handleSubmit}
                         >
                             <input type="hidden" name="form-name" value="contact" />
-                            
+                            <input type="hidden" name="bot-field" />
                             <div className="form-group">
                                 <label htmlFor="name">Name:</label>
                                 <input
@@ -67,7 +92,12 @@ const Contact: React.FC = () => {
                                 />
                             </div>
 
-                            <button type="submit">Send Message</button>
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
+                            </button>
                         </form>
                     )}
                 </div>
