@@ -1,20 +1,9 @@
-/* nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1rem 2rem;
-    background: #0a192f;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 1000;
-} */
-
 .navbar {
     position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
+    align-items: start !important;
     background: #0a192fc2;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -22,11 +11,11 @@
     transition: transform 0.3s ease-in-out;
 }
 
-nav .hidden {
+.navbar .hidden {
     transform: translateY(-100%);
 }
 
-nav .visible {
+.navbar .visible {
     transform: translateY(0);
 }
 
@@ -36,17 +25,7 @@ nav .visible {
     flex-grow: 1;
 }
 
-.nav-logo {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-nav a {
+.nav-link a {
     float: right;
     display: block;
     color: #f2f2f2;
@@ -57,7 +36,7 @@ nav a {
     font-size: 17px;
 }
 
-nav a:hover {
+.nav-link a:hover {
     background: linear-gradient(120deg, rgb(255, 49, 49) 40%, rgba(130, 44, 211, 0.8) 50%, rgba(151, 151, 151, 0.505) 40%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
@@ -66,7 +45,7 @@ nav a:hover {
     transition: transform 0.3s ease-in-out;
 }
 
-nav a.active {
+.nav-link a.active {
     background-color: #4CAF50;
     color: white;
 }
@@ -85,6 +64,7 @@ nav a.active {
     0% {
         background-position: 100%;
     }
+
     100% {
         background-position: -100%;
     }
@@ -129,12 +109,16 @@ nav a.active {
         pointer-events: auto;
     }
 
-    .nav-menu.closed {
+    .nav-links.closed {
         max-height: 0;
         display: none;
     }
 
-    .nav-menu .closed nav a {
+    .nav-links.closed .nav-links {
+        display: none;
+    }
+
+    .nav-links .closed nav a {
         display: none;
     }
 
@@ -149,8 +133,8 @@ nav a.active {
     .nav-toggle .bar {
         display: block;
         width: 25px;
-        height: 3px;
-        margin: 5px auto;
+        height: 4px;
+        margin: 3px auto;
         background-color: #ffffff;
         transition: all 0.3s ease;
     }

@@ -16,8 +16,8 @@
 .home {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 2rem;
+  align-items: center;
+  padding: 2rem 2rem 0rem 2rem;
   padding-top: 7rem !important;
   background: #0a192f;
   color: white;
@@ -93,7 +93,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 40px;
+  bottom: 15px;
   width: 100%;
   font-size: 1.5rem;
   color: #fff;
@@ -144,13 +144,6 @@
   transform: translateY(-3px);
 }
 
-.home-image img {
-  border-radius: 50%;
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  animation: zoomIn 1.5s ease-in-out;
-}
 
 @keyframes fadeIn {
   from {
@@ -203,5 +196,70 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .scroll-down {
+    bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 1rem;
+    padding-top: 1rem !important;
+    padding-right: 4.5rem !important;
+    background: #0a192f;
+    color: white;
+    position: relative;
+    min-height: 93vh;
+  }
+  .home-header{
+    font-size: 2rem;
+  }
+
+  .home-content {
+    text-align: left;
+  }
+
+  .home-buttons {
+    flex-direction: column;
+  }
+
+  .home-buttons a {
+    margin: 0.5rem;
+    text-align: center;
+  }
+
+  .home-title {
+    font-size: 2.5rem;
+  }
+
+  .home-subtitle {
+    font-size: 0.6rem;
+  }
+  .btn-primary,
+.btn-secondary {
+  padding:0.45rem 0.5rem;
+  font-size: 0.8rem;
+}
+  
+}
+@media screen and (max-width: 425px) {
+  .home-header{
+    font-size: 1.7rem;
+  }
+
+  .home-title {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .scroll-down{
+    display: none;
   }
 }

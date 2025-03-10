@@ -9,30 +9,23 @@ const Nav: React.FC = () => {
 
   const controlNavbar = useCallback(() => {
     const currentScrollY = window.scrollY;
+
     if (currentScrollY > lastScrollY && currentScrollY > 70) {
       setIsVisible(false);
     } else {
       setIsVisible(true);
     }
+
     setLastScrollY(currentScrollY);
   }, [lastScrollY]);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    
-    const debounceScroll = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(controlNavbar, 100);
-    };
-
-    window.addEventListener('scroll', debounceScroll);
+    window.addEventListener('scroll', controlNavbar);
     return () => {
-      window.removeEventListener('scroll', debounceScroll);
-      clearTimeout(timeoutId);
+      window.removeEventListener('scroll', controlNavbar);
     };
   }, [controlNavbar]);
 
-  const animationDuration = `5s`;
   const toggleNav = () => {
     setIsOpen(!isOpen);
   };
@@ -46,27 +39,27 @@ const Nav: React.FC = () => {
       role="navigation"
       aria-label="Main navigation"
     >
-      <>
-        <div 
-          className="nav-toggle" 
-          onClick={toggleNav}
-          role="button"
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation menu"
-        >
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+      <div
+        className="nav-toggle"
+        onClick={toggleNav}
+        role="button"
+        aria-expanded={isOpen}
+        aria-label="Toggle navigation menu"
+      >
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </div>
+      <div className="nav-link">
+        <div className={`shiny-text nav-links ${isOpen ? 'open' : 'closed'}`}>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a href="/assets/doc/resume.pdf" target="_blank" rel="noopener noreferrer">
+            Resume
+          </a>
         </div>
-        <div className="nav-link">
-          <div className={`shiny-text nav-links ${isOpen ? 'open' : 'closed'}`} style={{ animationDuration }}>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href='/assets/doc/resume.pdf' target="_blank" rel="noopener noreferrer">Resume</a>
-          </div>
-        </div>
-      </>
+      </div>
     </motion.nav>
   );
 };

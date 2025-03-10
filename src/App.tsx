@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import Intro from './components/intro/intro';
+import { ThemeProvider } from './common/Theme';
 
 function App() {
   return (
     <>
-      <Intro />
+      <ThemeProvider>
+        <Intro />
+      </ThemeProvider>
     </>
   );
 }

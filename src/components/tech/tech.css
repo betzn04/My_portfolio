@@ -7,14 +7,19 @@
 .techs{
     background: #0a192f;
     width: 100%;
-    min-height: 100vh;
+    min-height: 50vh;
     color:white;
 }
 
-.project-title{
+.tech-title{
+    padding: 35px 44px 0px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
+.tech-header{
+    padding-left: 45px;
+}
+
 
 .tech-card{
     background-color: #395482 !important;

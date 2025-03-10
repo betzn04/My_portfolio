@@ -5,7 +5,7 @@
 }
 .container {
     color: white;
-    min-height: 100vh;
+    min-height: 50vh;
 }
 
 .tooltip .tooltiptext {
@@ -37,8 +37,12 @@
 }
 
 .project-title{
+    padding: 35px 44px 0px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
+}
+.project-header{
+    padding-left: 45px;
 }
 
 .project-card {
@@ -86,10 +90,8 @@
 .project-card .btn:hover {
     background-color: #006aff;
 }
-@media (min-width: 768px) {
-    .container, .container-md, .container-sm {
-        width: 100%;
-        max-width: none;
-        padding: 5px;
+@media (max-width: 460px) {
+    .project-header {
+        padding: 11px 64px 0px 43px;
     }
 }

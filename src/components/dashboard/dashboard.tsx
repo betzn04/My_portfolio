@@ -1,5 +1,7 @@
+import About from "../about/about"
 import Contact from "../contact/contact"
 import Home from "../home/home"
+import Nav from "../nav/nav"
 import Projects from "../projects/project"
 import Techs from "../tech/tech"
 
@@ -7,16 +9,12 @@ import Techs from "../tech/tech"
 const dashboard = () => {
     return (
         <>
-            {/* <section id="home"> */}
-                <Home />
-            {/* </section> */}
-                <Projects />
-            {/* <section className='techs' id="techs"> */}
-                <Techs />
-            {/* </section> */}
-            {/* <section id="contact"> */}
-                <Contact />
-            {/* </section> */}
+            <Nav/>
+            <Home />
+            <About />
+            <Projects />
+            <Techs />
+            <Contact />
         </>
     )
 }

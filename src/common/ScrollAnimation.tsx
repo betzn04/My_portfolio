@@ -1,28 +1,65 @@
 import React, { ReactNode } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, MotionStyle } from 'framer-motion';
 
 interface ScrollAnimationProps {
   children: ReactNode;
+  startScale?: number;
+  endScale?: number;
+  startOpacity?: number;
+  endOpacity?: number;
+  duration?: number;
+  delay?: number;
+  customStyle?: MotionStyle;
 }
 
-const ScrollAnimation: React.FC<ScrollAnimationProps> = ({ children }) => {
-  const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0, 0.3], [0.5, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
+  children,
+  startScale = 0.7,
+  endScale = 1,
+  startOpacity = 0,
+  endOpacity = 1,
+  duration = 0.2,
+  delay = 0,
+  customStyle = {},
+}) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, {
+    once: false,
+    amount: 0.1, // How much of the element should be in view
+    margin: "0px 0px -100px 0px" // Negative margin to trigger animation slightly before element comes into view
+  });
 
   return (
-    <div>
-      <motion.div
-        style={{
-          scale,
-          opacity,
-        }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-      >
-        {children}
-      </motion.div>
-    </div>
+    <motion.div
+      ref={ref}
+      initial={{
+        scale: startScale,
+        opacity: startOpacity
+      }}
+      animate={{
+        scale: isInView ? endScale : startScale,
+        opacity: isInView ? endOpacity : startOpacity
+      }}
+      transition={{ 
+        duration, 
+        delay,
+        ease: "easeOut"
+      }}
+      style={customStyle}
+    >
+      {children}
+    </motion.div>
   );
+};
+
+// Default props for documentation
+ScrollAnimation.defaultProps = {
+  startScale: 0.5,
+  endScale: 1,
+  startOpacity: 0,
+  endOpacity: 1,
+  duration: 0.5,
+  delay: 0
 };
 
 export default ScrollAnimation;
