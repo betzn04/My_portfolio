@@ -12,23 +12,18 @@ const Contact: React.FC = () => {
 
         try {
             const form = e.currentTarget;
-            const formData = new FormData(form);
-
-            const response = await fetch('/', {
+            await fetch(form.action, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData as any).toString()
+                body: new FormData(form)
             });
-
-            if (response.ok) {
-                setIsSubmitted(true);
-            }
+            setIsSubmitted(true);
         } catch (error) {
             alert('There was an error submitting the form. Please try again.');
         } finally {
             setIsSubmitting(false);
         }
     };
+
     return (
         <div className="contact" id='contact'>
             <div className="contact-container">
@@ -60,6 +55,7 @@ const Contact: React.FC = () => {
                             data-netlify="true"
                             data-netlify-honeypot="bot-field"
                             onSubmit={handleSubmit}
+                            action="/contact/?success=true"
                         >
                             <input type="hidden" name="form-name" value="contact" />
                             <input type="hidden" name="bot-field" />
