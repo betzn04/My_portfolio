@@ -9,7 +9,7 @@ const Contact: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-
+    
         try {
             const formData = new FormData(e.currentTarget);
             const data = {
@@ -17,7 +17,15 @@ const Contact: React.FC = () => {
                 email: formData.get('email')?.toString().trim(),
                 message: formData.get('message')?.toString().trim()
             };
-
+    
+            if (!data.name || !data.email || !data.message) {
+                throw new Error('All fields are required');
+            }
+    
+            if (!isValidEmail(data.email)) {
+                throw new Error('Invalid email format');
+            }
+    
             const apiUrl = process.env.REACT_APP_API_URL || '/api';
             const response = await fetch(`${apiUrl}/contact`, {
                 method: 'POST',
@@ -26,16 +34,24 @@ const Contact: React.FC = () => {
                 },
                 body: JSON.stringify(data)
             });
-
+    
+            const contentType = response.headers.get('content-type');
+            let errorMessage = 'Network response was not ok';
+    
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || 'Network response was not ok');
+                if (contentType && contentType.includes('application/json')) {
+                    const errorData = await response.json();
+                    errorMessage = errorData.error || errorMessage;
+                } else {
+                    errorMessage = await response.text() || errorMessage;
+                }
+                throw new Error(errorMessage);
             }
-
+    
             setIsSubmitted(true);
         } catch (error) {
-            console.error('Error:', error);
-            alert(error instanceof Error ? error.message : 'An error occurred');
+            console.error('Form submission error:', error);
+            alert(error instanceof Error ? error.message : 'An error occurred while sending the message');
         } finally {
             setIsSubmitting(false);
         }
