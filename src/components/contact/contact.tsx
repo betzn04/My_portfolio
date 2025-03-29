@@ -11,17 +11,38 @@ const Contact: React.FC = () => {
         setIsSubmitting(true);
 
         try {
-            const form = e.currentTarget;
-            await fetch(form.action, {
+            const formData = new FormData(e.currentTarget);
+            const data = {
+                name: formData.get('name')?.toString().trim(),
+                email: formData.get('email')?.toString().trim(),
+                message: formData.get('message')?.toString().trim()
+            };
+
+            const apiUrl = process.env.REACT_APP_API_URL || '/api';
+            const response = await fetch(`${apiUrl}/contact`, {
                 method: 'POST',
-                body: new FormData(form)
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
             });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Network response was not ok');
+            }
+
             setIsSubmitted(true);
         } catch (error) {
-            alert('There was an error submitting the form. Please try again.');
+            console.error('Error:', error);
+            alert(error instanceof Error ? error.message : 'An error occurred');
         } finally {
             setIsSubmitting(false);
         }
+    };
+
+    const isValidEmail = (email: string): boolean => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     };
 
     return (
@@ -51,14 +72,10 @@ const Contact: React.FC = () => {
                     ) : (
                         <form
                             name="contact"
-                            method="POST"
-                            data-netlify="true"
-                            data-netlify-honeypot="bot-field"
                             onSubmit={handleSubmit}
-                            action="/contact/?success=true"
                         >
-                            <input type="hidden" name="form-name" value="contact" />
-                            <input type="hidden" name="bot-field" />
+                            <input type="hidden" value="contact" />
+                            <input type="hidden" />
                             <div className="form-group">
                                 <label htmlFor="name">Name:</label>
                                 <input
