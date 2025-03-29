@@ -26,8 +26,7 @@ const Contact: React.FC = () => {
                 throw new Error('Invalid email format');
             }
     
-            const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-            const response = await fetch(`${apiUrl}/api/contact`, {
+            const response = await fetch('/.netlify/functions/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
