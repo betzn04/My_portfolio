@@ -26,32 +26,30 @@ const Contact: React.FC = () => {
                 throw new Error('Invalid email format');
             }
     
-            const apiUrl = process.env.REACT_APP_API_URL || '/api';
-            const response = await fetch(`${apiUrl}/contact`, {
+            const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+            const response = await fetch(`${apiUrl}/api/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data)
             });
-    
-            const contentType = response.headers.get('content-type');
-            let errorMessage = 'Network response was not ok';
-    
+
             if (!response.ok) {
-                if (contentType && contentType.includes('application/json')) {
-                    const errorData = await response.json();
-                    errorMessage = errorData.error || errorMessage;
-                } else {
-                    errorMessage = await response.text() || errorMessage;
+                const text = await response.text();
+                try {
+                    const errorData = JSON.parse(text);
+                    throw new Error(errorData.error || 'Server error');
+                } catch (e) {
+                    throw new Error(`Server error: ${response.status}`);
                 }
-                throw new Error(errorMessage);
             }
     
+            const result = await response.json();
             setIsSubmitted(true);
         } catch (error) {
             console.error('Form submission error:', error);
-            alert(error instanceof Error ? error.message : 'An error occurred while sending the message');
+            alert(error instanceof Error ? error.message : 'An error occurred');
         } finally {
             setIsSubmitting(false);
         }
