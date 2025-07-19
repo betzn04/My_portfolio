@@ -21,12 +21,12 @@ const Contact: React.FC = () => {
             if (!data.name || !data.email || !data.message) {
                 throw new Error('All fields are required');
             }
-    
+      
             if (!isValidEmail(data.email)) {
                 throw new Error('Invalid email format');
             }
     
-            const response = await fetch('/.netlify/functions/contact', {
+            const response = await fetch('https://formspree.io/f/manbngvg', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,20 +35,13 @@ const Contact: React.FC = () => {
             });
 
             if (!response.ok) {
-                const text = await response.text();
-                try {
-                    const errorData = JSON.parse(text);
-                    throw new Error(errorData.error || 'Server error');
-                } catch (e) {
-                    throw new Error(`Server error: ${response.status}`);
-                }
+                throw new Error(`Failed to send message. Status: ${response.status}`);
             }
     
-            const result = await response.json();
             setIsSubmitted(true);
         } catch (error) {
             console.error('Form submission error:', error);
-            alert(error instanceof Error ? error.message : 'An error occurred');
+            alert(error instanceof Error ? error.message : 'An error occurred while sending the message');
         } finally {
             setIsSubmitting(false);
         }
@@ -87,8 +80,6 @@ const Contact: React.FC = () => {
                             name="contact"
                             onSubmit={handleSubmit}
                         >
-                            <input type="hidden" value="contact" />
-                            <input type="hidden" />
                             <div className="form-group">
                                 <label htmlFor="name">Name:</label>
                                 <input
