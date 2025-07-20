@@ -5,8 +5,9 @@ const styles = {
     wrapper: {
         display: 'inline-block',
         whiteSpace: 'pre-wrap',
-        fontFamily: "Shrikhand",
+        // fontFamily: "Shrikhand", // Remove this line to inherit font
         fontWeight: 400,
+        color: 'var(--color-text)', // Let color inherit from parent
     },
     srOnly: {
         position: 'absolute' as 'absolute',

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './contact.css';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Contact: React.FC = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -48,13 +49,32 @@ const Contact: React.FC = () => {
     };
 
     const isValidEmail = (email: string): boolean => {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        return /^[^\s@]+@[^ 0-9]+\.[^\s@]+$/.test(email);
     };
 
     return (
-        <div className="contact" id='contact'>
-            <div className="contact-container">
-                <div className="contact-info">
+        <motion.div
+            className="contact"
+            id="contact"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+            <motion.div
+                className="contact-container"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+            >
+                <motion.div
+                    className="contact-info"
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
+                >
                     <h3>Get in Touch</h3>
                     <p>I'd love to hear from you! Whether you have a question, feedback, or just want to connect, feel free to reach out. You can contact me through the options below or fill out the form to send a message directly.</p>
                     <br />
@@ -69,8 +89,14 @@ const Contact: React.FC = () => {
                             <FaEnvelope /> <a href="mailto:betsingmr@gmail.com">betsingmr@gmail.com</a>
                         </p>
                     </div>
-                </div>
-                <div className="contact-form">
+                </motion.div>
+                <motion.div
+                    className="contact-form"
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.7, delay: 0.6, ease: 'easeOut' }}
+                >
                     {isSubmitted ? (
                         <div className="success-message">
                             Thanks for reaching out! I'll get back to you soon.
@@ -117,9 +143,9 @@ const Contact: React.FC = () => {
                             </button>
                         </form>
                     )}
-                </div>
-            </div>
-        </div>
+                </motion.div>
+            </motion.div>
+        </motion.div>
     );
 };
 

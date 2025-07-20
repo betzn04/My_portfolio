@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 
 body, html {
-  background-color: #0a192f !important;
+  background-color: var(--color-bg) !important;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -12,16 +12,16 @@ body, html {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: black;
-  color: white;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
   font-size: 2rem;
   font-family: 'Poppins', sans-serif;
-  transition: opacity 300ms ease-out;
+  transition: opacity 300ms ease-out, background 0.3s;
 }
 
 .fade-out {
   animation: fadeOut 2s forwards;
-  background-color: black;
+  background-color: var(--color-bg-alt);
 }
 
 .split-text span {
@@ -29,6 +29,7 @@ body, html {
   opacity: 0;
   transform: translateY(100%);
   animation: fadeInUp 0.5s forwards;
+  color: var(--color-text);
 }
 
 .split-text span:nth-child(1) { animation-delay: 0s; }
@@ -57,10 +58,10 @@ body, html {
 @keyframes fadeOut {
   from {
     opacity: 1;
-    background-color: black; 
+    background-color: var(--color-bg-alt); 
   }
   to {
     opacity: 0;
-    background-color: black; 
+    background-color: var(--color-bg-alt); 
   }
 }

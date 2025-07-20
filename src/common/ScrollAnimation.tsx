@@ -52,14 +52,4 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
   );
 };
 
-// Default props for documentation
-ScrollAnimation.defaultProps = {
-  startScale: 0.5,
-  endScale: 1,
-  startOpacity: 0,
-  endOpacity: 1,
-  duration: 0.5,
-  delay: 0
-};
-
 export default ScrollAnimation;

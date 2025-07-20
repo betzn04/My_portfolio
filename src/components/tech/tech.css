@@ -5,25 +5,29 @@
 }
 
 .techs{
-    background: #0a192f;
+    background: var(--color-bg);
     width: 100%;
     min-height: 50vh;
-    color:white;
+    color: var(--color-text);
 }
 
 .tech-title{
     padding: 35px 44px 0px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
+    color: var(--color-text);
 }
 .tech-header{
     padding-left: 45px;
+    color: var(--color-text-light);
 }
 
-
 .tech-card{
-    background-color: #395482 !important;
-    color: #fff !important;
+    background-color: var(--color-bg-alt) !important;
+    color: var(--color-text) !important;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1.5px solid var(--color-border);
 }
 
 .tilt {

@@ -1,11 +1,27 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import './nav.css';
 import { motion } from 'framer-motion';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('theme') === 'dark';
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => setDarkMode((d) => !d);
 
   const controlNavbar = useCallback(() => {
     const currentScrollY = window.scrollY;
@@ -33,8 +49,8 @@ const Nav: React.FC = () => {
   return (
     <motion.nav
       className={`navbar ${isVisible ? 'visible' : 'hidden'}`}
-      initial={{ y: -50 }}
-      animate={{ y: 0 }}
+      initial={{ x: -50 }}
+      animate={{ x: 0 }}
       transition={{ duration: 0.5 }}
       role="navigation"
       aria-label="Main navigation"
@@ -58,6 +74,14 @@ const Nav: React.FC = () => {
           <a href="/assets/doc/resume.pdf" target="_blank" rel="noopener noreferrer">
             Resume
           </a>
+        </div>
+        <div
+          className="dark-toggle-btn"
+          onClick={toggleDarkMode}
+          aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          style={{ marginRight: 10, background: 'none', border: 'none', cursor: 'pointer', fontSize: 18 }}
+        >
+          {darkMode ? <FaSun color="#FFD600" /> : <FaMoon color="#3a86ff" />}
         </div>
       </div>
     </motion.nav>
